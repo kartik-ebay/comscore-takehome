@@ -1,0 +1,6 @@
+env
+output
+.DS_Store
+__pycache__
+test_coverage_report
+.coverage
