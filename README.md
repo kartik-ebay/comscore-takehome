@@ -1,4 +1,4 @@
-# Comscore Coding Exercise [![Build Status](https://travis-ci.org/manoflogan/comscore-takehome.svg?branch=master)](https://travis-ci.org/manoflogan/comscore-takehome)
+# Comscore Coding Exercise
 
 ### Table of Contents
 
@@ -20,9 +20,9 @@
 
 * Install `pipenv` using the command `pip install pipenv`
 
-* Install the required project dependencies within the virtual environment with the command `pipenv install`
+* Install the required project dependencies within the virtual environment by executing the command `pipenv install`
 
-* Run the command `pytest` to run the unit tests. The code coverage reports will generated and displayed on the console.
+* Run the command `pytest` to run the unit tests. The code coverage reports will be generated and displayed on the console.
 
 ## Execution
 

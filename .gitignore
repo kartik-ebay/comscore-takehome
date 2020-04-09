@@ -4,3 +4,5 @@ output
 __pycache__
 test_coverage_report
 .coverage
+# pyenv
+.python-version

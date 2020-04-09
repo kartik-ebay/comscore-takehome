@@ -52,7 +52,7 @@ class Query(object):
         Args:
             select: selection criteria
             order: order criteria
-            filter: filter criteria
+            filter_list: filter criteria
         """
         self.select = select or []
         self.order = order or []
@@ -69,6 +69,9 @@ class Query(object):
         2. The contents of all the filtered are read and stored to a list
 
         3. The contents are sorted by the keys provided by order
+
+        Args:
+            root_dir: root directory containing the data files
         """
         # Step 1: Filter files
         if self.filter_list:
@@ -103,18 +106,12 @@ class Query(object):
                                    key=operator.itemgetter(*self.order))
 
         # Select list
-        if self.select:
-            output_rows = []
-            for filtered_row in filtered_rows:
-                output_rows.append(
-                    ', '.join([filtered_row.get(select_column, '')
-                               for select_column in self.select]))
-        else:
-            output_rows = []
-            for filtered_row in filtered_rows:
-                output_rows.append(', '.join([filtered_row.get(column, '')
-                                              for column in filtered_row]))
-
+        output_rows = [
+            ', '.join([filtered_row.get(select_column, '')
+                       for select_column in self.select]) if self.select
+            else (', '.join([filtered_row.get(column, '')
+                             for column in filtered_row]))
+            for filtered_row in filtered_rows]
         return output_rows
 
     def __repr__(self):
