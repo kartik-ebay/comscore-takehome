@@ -44,7 +44,18 @@ def root_directory():
     return os.path.normpath(os.path.dirname(os.path.abspath(__file__)))
 
 
+@pytest.fixture
+def empty_directory():
+    """Returns an non existent directory."""
+    return 'does_not_exist'
+
+
 class TestQuery(object):
+
+    def test__root_directory_not_exists__returns_empty_list(
+            self, empty_directory):
+        query = datastore_query.Query()
+        assert query(empty_directory) == []
 
     def test_no_arguments__returns_all_inputs(self, datastore, root_directory):
         query = datastore_query.Query()

@@ -26,7 +26,7 @@
 
 ## Execution
 
-* Run the command `python datastore_importer.py < file.txt` or `python datastore_importer.py file.txt` to execute the program.
+* Run the command `python datastore_importer.py < datastore.csv` or `python datastore_importer.py datastore.csv` to execute the program.
 
 * Run the command `./query.sh <arguments>` to run the query module.
 

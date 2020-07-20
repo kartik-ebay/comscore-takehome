@@ -5,12 +5,19 @@ The query tool accepts command line arguments representing the query parameters
 
 import argparse
 import csv
+import logging
+from logging import config
 import operator
 import os
+from os import path
 import sys
 import typing
 
 import constants
+
+
+config.fileConfig('logging.conf')
+logger = logging.getLogger('root')
 
 
 class DelimiterSeparatedInput(object):
@@ -72,8 +79,15 @@ class Query(object):
 
         Args:
             root_dir: root directory containing the data files
+
+        Returns:
+            list of selected rows
         """
         # Step 1: Filter files
+        if not path.exists(root_dir):
+            logging.warning(
+                'The root directory {} does not exist'.format(root_dir))
+            return list()
         if self.filter_list:
             filtered_combo: typing.List[str] = [
                 row_filter[1]

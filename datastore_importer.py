@@ -57,9 +57,8 @@ def store_data_to_file():
                   encoding='utf-8') as file_object:
             file_writer = csv.writer(file_object, delimiter='|',
                                      quoting=csv.QUOTE_ALL)
-            if FILE_HEADER and is_header_parsed:
+            if FILE_HEADER:
                 file_writer.writerow(FILE_HEADER)
-                is_header_parsed = True
             file_writer.writerow(data_set)
 
 
